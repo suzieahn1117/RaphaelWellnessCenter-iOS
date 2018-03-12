@@ -1,0 +1,6 @@
+framework module Pods_RaphaelSignIn {
+  umbrella header "Pods-RaphaelSignIn-umbrella.h"
+
+  export *
+  module * { export * }
+}
