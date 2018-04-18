@@ -198,6 +198,7 @@
                         <outlet property="Birthday" destination="hji-uJ-83k" id="heR-y2-3DI"/>
                         <outlet property="City" destination="2aS-V7-ne6" id="1xI-kJ-kvZ"/>
                         <outlet property="Name" destination="YE5-Mb-hQD" id="ygt-kB-1V0"/>
+                        <outlet property="Payment" destination="1eW-9i-Tfc" id="ERJ-Ej-cPG"/>
                         <outlet property="Phone" destination="V2a-ie-mmh" id="7dh-FB-jyy"/>
                         <outlet property="State" destination="Plh-5K-Slz" id="RyI-rV-cPi"/>
                         <outletCollection property="Gender" destination="U5N-A5-bVy" collectionClass="NSMutableArray" id="NFE-Vo-zB1"/>

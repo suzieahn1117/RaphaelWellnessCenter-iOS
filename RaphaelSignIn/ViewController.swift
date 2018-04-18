@@ -8,10 +8,19 @@
 import UIKit
 import FirebaseDatabase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var ref: DatabaseReference!
     
+    let payment_type = ["Insurance", "Motor Vehicle Accident", "Cash"]
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        <#code#>
+    }
    
     @IBAction func Submit(_ sender: UIButton) {
         let new_patient = getPatientInfo()
@@ -31,6 +40,9 @@ class ViewController: UIViewController {
     @IBOutlet var State: UITextField!
     
     @IBOutlet var Phone: UITextField!
+    
+    @IBOutlet var Payment: UIPickerView!
+    
     
     
     
@@ -68,21 +80,23 @@ class ViewController: UIViewController {
         
     }
     
-    func concatAddress(address: String?, city: String?, state: String?)->String?{
+    func contactAddress(address: String?, city: String?, state: String?)->String?{
         var to_return: String?
-        to_return = address! + city! + state!
+        to_return = address!+" " + city!+" " + state!
         return to_return
     }
     
     func sendToFirebase(patient: patientInfo){
         ref = Database.database().reference()
+        var address: String?
+        address = contactAddress(address: patient.address, city: patient.city, state: patient.state)
         
         let patient_ref = self.ref!.child("patients").childByAutoId()
         let patient_id = patient_ref.key
         self.ref.child("patients").child(patient_id).child("name").setValue(patient.name)
         self.ref.child("patients").child(patient_id).child("gender").setValue(patient.gender)
         self.ref.child("patients").child(patient_id).child("dob").setValue(patient.birthday)
-        self.ref.child("patients").child(patient_id).child("address").setValue(patient.address)
+        self.ref.child("patients").child(patient_id).child("address").setValue(address)
         self.ref.child("patients").child(patient_id).child("phone_number").setValue(patient.phone)
     
     }

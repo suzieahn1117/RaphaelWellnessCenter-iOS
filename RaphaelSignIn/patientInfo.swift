@@ -16,6 +16,7 @@ struct patientInfo{
     var city: String?
     var state: String?
     var phone: String?
+    var payment: String?
     
     
     init(){
@@ -27,6 +28,7 @@ struct patientInfo{
         self.city = nil
         self.state = nil
         self.phone = nil
+        self.payment = nil
         
     }
 }
